@@ -22,8 +22,8 @@ export function ListBlog() {
                         <tr>
                             <th>ID</th>
                             <th>TITLE</th>
-                            <th>CATEGORY</th>
-                            <th>UPDATE AT</th>
+                            <th style={{textAlign:"left", marginLeft:"20px"}}>CATEGORY</th>
+                            <th style={{textAlign:"right"}}>TIME</th>
                         </tr>
                         </thead>
                         <tbody>
