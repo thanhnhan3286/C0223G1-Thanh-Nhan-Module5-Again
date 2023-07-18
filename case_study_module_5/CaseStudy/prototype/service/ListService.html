@@ -192,5 +192,43 @@
         </div>
     </div>
 </div>
+<!--phân trang-->
+<nav aria-label=" Page navigation example d-flex justify-content-center " style="margin:20px auto">
+    <ul class="pagination d-flex justify-content-center ">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+</nav>
+<!--&lt;!&ndash;{/*phân trang*/}&ndash;&gt;-->
+<!--<nav aria-label="Page navigation example" class="mt-5">-->
+<!--    <ul class="pagination justify-content-center ">-->
+<!--        <li class="page-item ">-->
+<!--            <a-->
+<!--                    class="page-link"-->
+<!--                    href="@{'/orderController/'(page=${orderPage.number -1})}"-->
+<!--                    if="${orderPage.hasPrevious()}"-->
+<!--            >-->
+<!--                Previous-->
+<!--            </a>-->
+<!--        </li>-->
+<!--&lt;!&ndash;        {/*                        <li style="border: 1px solid #CCCCCC" class="page-item active" >&ndash;&gt;-->
+<!--&lt;!&ndash;        <a class="page-link active" th:text="${pageNo}" th:href="@{/(page=${pageNo})}"></a></li>*/}&ndash;&gt;-->
+<!--        <li class="page-item    ">-->
+<!--            <a class="page-link" text="${orderPage.number +1}">-->
+<!--                1-->
+<!--            </a>-->
+<!--        </li>-->
+<!--        <li class="page-item">-->
+<!--            <a-->
+<!--                    class="page-link"-->
+<!--                    href="@{'/orderController/'(page=${orderPage.number +1})}"-->
+<!--                    if="${orderPage.hasNext()}"-->
+<!--            >-->
+<!--                Next-->
+<!--            </a>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--</nav>-->
 </body>
 </html>
