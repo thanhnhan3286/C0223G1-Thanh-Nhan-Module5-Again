@@ -71,7 +71,7 @@ export function ListBlog() {
                                     <td className="text-left">{post.category}</td>
                                     <td className="text-right">{post.updatedAt}</td>
                                     <td>
-                                        <Link to={`/editBlog/${post.id}`} type="button"
+                                        <Link to={`/edit/${post.id}`} type="button"
                                               className="btn btn-warning">
                                             {/*    <button className="btn btn-warning">*/}
                                             EDIT
