@@ -1,13 +1,6 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "5 Best Crypto Performers During The 2022 Market Flop",
-      "slug": "5-best-crypto-performers-during-the-2022-market-flop",
-      "category": "Crypto News",
-      "updatedAt": "21 hours ago"
-    },
-    {
       "id": 2,
       "title": " Top crypto funding stories of 2022  ",
       "slug": "top-crypto-funding-stories-of-2022",
@@ -36,13 +29,7 @@
       "updatedAt": "2 days ago"
     }
   ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
+  "comments": [],
   "profile": {
     "name": "typicode"
   }

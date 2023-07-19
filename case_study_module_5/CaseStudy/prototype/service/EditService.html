@@ -72,30 +72,29 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">Service Name</span>
                 </div>
-                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
+                <input type="text" value="OCEAN STUDIO SUITE" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
             </div>
             <div class="input-group input-group-sm mg">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">User Area</span>
+                    <span class="input-group-text">User Area(m2)</span>
                 </div>
-                <input type="text" class="form-control pr-1" aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
-                <div class="input-group-prepend pl-1">
-                    <span class="input-group-text">Rental Cost</span>
-                </div>
-                <input type="number" min="40" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
+                <input type="number" min="40" value="40.1" class="form-control pr-1" aria-label="Small"
+                       aria-describedby="inputGroup-sizing-sm"/>
             </div>
-<!--            <div class="input-group input-group-sm mg">-->
-<!--                <div class="input-group-prepend">-->
-<!--                    <span class="input-group-text">Rental Cost</span>-->
-<!--                </div>-->
-<!--                <input type="number" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>-->
-<!--            </div>-->
+            <div class="input-group input-group-sm mg">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Rental Cost($)</span>
+                </div>
+                <input type="number" min="1000" value="1099" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
+            </div>
             <div class="input-group input-group-sm mg">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Max People</span>
                 </div>
-                <input type="number" min="2" max="30" class="form-control" aria-label="Small"
+                <input type="number" min="2" max="30" value="2" class="form-control" aria-label="Small"
                        aria-describedby="inputGroup-sizing-sm"/>
+            </div>
+            <div class="input-group input-group-sm mg">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Rental Type</span>
                 </div>
@@ -106,17 +105,6 @@
                     <option>Hour</option>
                 </select>
             </div>
-<!--            <div class="input-group input-group-sm mg">-->
-<!--                <div class="input-group-prepend">-->
-<!--                    <span class="input-group-text">Rental Type</span>-->
-<!--                </div>-->
-<!--                <select class="form-select">-->
-<!--                    <option>Year</option>-->
-<!--                    <option>Month</option>-->
-<!--                    <option>Day</option>-->
-<!--                    <option>Hour</option>-->
-<!--                </select>-->
-<!--            </div>-->
             <div class="input-group input-group-sm mg">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Room Standard</span>
@@ -131,20 +119,20 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">Other Utilities</span>
                 </div>
-                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
+                <input type="text" value="KARAOKE, BIDA" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
             </div>
             <div class="input-group input-group-sm mg">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Quantity Of Floor</span>
                 </div>
-                <input type="number" min="1" max="10" class="form-control" aria-label="Small"
+                <input type="number" min="1" max="10" value="0" class="form-control" aria-label="Small"
                        aria-describedby="inputGroup-sizing-sm"/>
             </div>
             <div class="input-group input-group-sm mg">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Pool Area</span>
                 </div>
-                <input type="number" min="40" max="1000" class="form-control" aria-label="Small"
+                <input type="number" min="40" max="1000" value="0" class="form-control" aria-label="Small"
                        aria-describedby="inputGroup-sizing-sm"/>
             </div>
             <div class="input-group input-group-sm mg">
@@ -157,12 +145,13 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">URL Image</span>
                 </div>
-                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
+                <input type="text" value="https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Studio-Suite-F-370x239.jpg"
+                       class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
             </div>
             <br/>
             <div style="text-align: center; margin-bottom: 30px">
                 <button type="submit" class="btn btn-success">
-                    ADD
+                    EDIT
                 </button>
             </div>
         </form>
