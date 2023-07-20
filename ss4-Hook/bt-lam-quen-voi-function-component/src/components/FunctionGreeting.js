@@ -5,7 +5,7 @@ export function FunctionGreeting() {
     const [lastName, setLastName] = useState(window.localStorage.getItem("classLastName") || '');
     useEffect(() => {
         window.localStorage.setItem("classFirstName", firstName);
-        window.localStorage.setItem("classLassName", lastName);
+        window.localStorage.setItem("classLastName", lastName);
     }, [firstName, lastName])
     return (
         <>
