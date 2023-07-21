@@ -151,7 +151,8 @@ export function CreateBlog() {
                                             <span className="input-group-text">Content</span>
                                         </div>
                                         <Field
-                                            type="textarea"
+                                            as="textarea"
+                                            type="text"
                                             name="content"
                                             className="form-control"
                                             aria-label="Small"
