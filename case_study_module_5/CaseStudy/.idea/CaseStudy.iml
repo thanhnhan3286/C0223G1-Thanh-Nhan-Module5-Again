@@ -14,5 +14,8 @@
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="animate" level="application" />
     <orderEntry type="library" name="ionicons" level="application" />
+    <orderEntry type="library" name="twitter-bootstrap" level="application" />
+    <orderEntry type="library" name="jquery-1.12.4" level="application" />
+    <orderEntry type="library" name="twitter-bootstrap" level="application" />
   </component>
 </module>

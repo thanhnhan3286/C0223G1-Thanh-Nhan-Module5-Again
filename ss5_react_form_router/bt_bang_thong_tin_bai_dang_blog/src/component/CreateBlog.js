@@ -11,7 +11,6 @@ export function CreateBlog() {
     const [title,setTitle] = useState('');
     const [slug,setSlug] = useState('');
     const getSlug = () => {
-
         setSlug(title.toLowerCase().replace(/\s+/g, "-").replace(/[:,;/_'^]+/g,""));
         console.log(slug)
     }
@@ -65,7 +64,6 @@ export function CreateBlog() {
                                 Create Blog
                             </h2>
                             <div className="text-center">
-
                                 <Link to={'/'} type="button" className="btn btn-outline-success">Back</Link>
                             </div>
                             <div

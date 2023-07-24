@@ -16,7 +16,7 @@ export function Navigation() {
                             />
                             <div className="carousel-caption d-none d-md-block">
                                 <h1 className="display-2 h2-form" style={{fontSize: 50}}>
-                                    ROOM &amp; SUITES
+                                    ROOM & SUITES
                                 </h1>
                                 <button
                                     type="submit"

@@ -1,4 +1,4 @@
-import "./create_edit.css"
+
 import React from "react";
 export function CreateService() {
     return (
