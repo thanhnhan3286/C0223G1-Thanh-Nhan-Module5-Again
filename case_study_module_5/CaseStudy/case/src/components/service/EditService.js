@@ -1,11 +1,12 @@
 import "./create_edit.css"
 import React from "react";
+// import "bootstrap/dist/css/bootstrap.css"
 
 export function EditService() {
     return (
         <>
             <div
-                className="container boxed"
+                className="container boxed "
                 style={{ marginTop: "2%", width: 700, height: "auto" }}
             >
                 <h2 style={{ textAlign: "center", marginTop: 20 }}> EDIT SERVICE</h2>

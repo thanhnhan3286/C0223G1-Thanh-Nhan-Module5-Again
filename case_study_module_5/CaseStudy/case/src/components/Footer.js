@@ -1,4 +1,4 @@
-import "./HeaderFooterNav.css"
+// import "./HeaderFooterNav.css"
 import React from "react";
 export function Footer() {
     return (
@@ -57,6 +57,7 @@ export function Footer() {
                                         data-toggle="modal"
                                         data-target="#alertModal"
                                         type="button"
+                                        style={{color:"white"}}
                                     >
                                         Subscribe for updates
                                     </button>
