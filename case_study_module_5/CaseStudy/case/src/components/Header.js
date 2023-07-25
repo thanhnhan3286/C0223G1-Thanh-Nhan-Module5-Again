@@ -1,4 +1,4 @@
-// import "./HeaderFooterNav.css"
+import "./HeaderFooterNav.css"
 import React from "react";
 
 export function Header() {
@@ -63,6 +63,80 @@ export function Header() {
                     </div>
                 </div>
             </nav>
+            <section id="two">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-12 text-center">
+                            <h2 className="margin-top-0 text-primary">Flexible Layouts</h2>
+                            <hr className="primary" />
+                        </div>
+                    </div>
+                </div>
+                <div className="container">
+                    <div className="row">
+                        <div className="border-2 border-secondary bg-danger col-lg-4 col-md-4 text-center">
+                            <div className="feature">
+                                <i
+                                    className="icon-lg ion-android-laptop wow fadeIn"
+                                    data-wow-delay=".3s"
+                                />
+                                <h3>Responsive</h3>
+                                <p className="text-muted">Your site looks good everywhere</p>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-4 text-center">
+                            <div className="feature">
+                                <i
+                                    className="icon-lg ion-social-sass wow fadeInUp"
+                                    data-wow-delay=".2s"
+                                />
+                                <h3>Customizable</h3>
+                                <p className="text-muted">Easy to theme and customize with SASS</p>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-4 text-center">
+                            <div className="feature">
+                                <i
+                                    className="icon-lg ion-ios-star-outline wow fadeIn"
+                                    data-wow-delay=".3s"
+                                />
+                                <h3>Consistent</h3>
+                                <p className="text-muted">A mature, well-tested, stable codebase</p>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-4 text-center">
+                            <div className="feature">
+                                <i
+                                    className="icon-lg ion-ios-star-outline wow fadeIn"
+                                    data-wow-delay=".3s"
+                                />
+                                <h3>Consistent</h3>
+                                <p className="text-muted">A mature, well-tested, stable codebase</p>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-4 text-center">
+                            <div className="feature">
+                                <i
+                                    className="icon-lg ion-ios-star-outline wow fadeIn"
+                                    data-wow-delay=".3s"
+                                />
+                                <h3>Consistent</h3>
+                                <p className="text-muted">A mature, well-tested, stable codebase</p>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-4 text-center">
+                            <div className="feature">
+                                <i
+                                    className="icon-lg ion-ios-star-outline wow fadeIn"
+                                    data-wow-delay=".3s"
+                                />
+                                <h3>Consistent</h3>
+                                <p className="text-muted">A mature, well-tested, stable codebase</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </>
     )
 }

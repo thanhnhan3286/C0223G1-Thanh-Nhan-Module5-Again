@@ -13,8 +13,8 @@ function App() {
             {/*<Routes>*/}
             {/*    <Route path={`/`} element={<ListService/>}/>*/}
             {/*</Routes>*/}
-            <EditService/>
-            <CreateService/>
+            {/*<EditService/>*/}
+            {/*<CreateService/>*/}
             {/*<ListService/>*/}
             <Footer/>
         </>
