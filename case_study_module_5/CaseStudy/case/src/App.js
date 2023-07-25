@@ -5,6 +5,7 @@ import {ListService} from "./components/service/ListService";
 import {Route, Routes} from "react-router";
 import {EditService} from "./components/service/EditService";
 import {CreateService} from "./components/service/CreateService";
+import {ListCustomer} from "./components/customer/ListCustomer";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
             {/*<EditService/>*/}
             {/*<CreateService/>*/}
             {/*<ListService/>*/}
+            <ListCustomer/>
             <Footer/>
         </>
     );

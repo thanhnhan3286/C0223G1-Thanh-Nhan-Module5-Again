@@ -1,3 +1,6 @@
+import React from "react";
+// import "bootstrap/dist/css/bootstrap.css"
+
 export function ListCustomer() {
     return (
         <>
@@ -6,7 +9,7 @@ export function ListCustomer() {
                 <a href="http://localhost:63342/CaseStudy/prototype/customer/CreateCustomer.html?_ijt=50e36da1o38qlm9k98qvbpb2ce">
                     <button
                         type="button"
-                        className="btn btn-primary text-capitalize"
+                        className="btn btn-secondary text-capitalize"
                         data-bs-toggle="modal"
                         fdprocessedid="q2sbyt"
                     >
