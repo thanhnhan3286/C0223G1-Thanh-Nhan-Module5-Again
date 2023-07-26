@@ -45,11 +45,11 @@ export default function List() {
             <div className="container mt-3">
                 <div className="text-center bg-body-secondary pb-3">
                     <h2 className="pt-3">List Post</h2>
-                    <a href={`/components/CreatePost`}>
+                    <Link href={`/post/CreatePost`}>
                         <button className="btn btn-success">
                             Create New Post
                         </button>
-                    </a>
+                    </Link>
                 </div>
                 <div className="table-responsive-md">
                     <table className="table table-secondary">
@@ -71,7 +71,8 @@ export default function List() {
                                     <td>
                                         <Link href={`/post/${post.id}`}>
                                             {post.title}
-                                        </Link> </td>
+                                        </Link>
+                                    </td>
                                     {/*<td>{post.slug} </td>*/}
                                     <td>{post.category} </td>
                                     <td>{post.updatedAt} </td>

@@ -78,7 +78,6 @@ export default function CreatePost() {
                                         </div>
                                         <Field
                                             onKeyUp={(e) => {
-                                                console.log(e.target.value)
                                                 setTitle(e.target.value)
                                             }}
                                             type="text"
@@ -86,7 +85,6 @@ export default function CreatePost() {
                                             className="form-control text-center"
                                             aria-label="Small"
                                             aria-describedby="inputGroup-sizing-sm"
-
                                         />
                                     </div>
                                     <ErrorMessage name="title" component="span" className="error-mess m-lg-3"/>
