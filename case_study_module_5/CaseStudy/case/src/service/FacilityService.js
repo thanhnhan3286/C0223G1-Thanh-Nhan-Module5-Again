@@ -1,9 +1,19 @@
 import axios from "axios";
 
-export const create = async (param) => {
+export const findById = async (id) => {
     try {
-        await axios.post(`http://localhost:8080/facility`,param);
+        return (await axios.get(`http://localhost:8080/facility/` +id)).data;
     }catch (e) {
+        console.log(e
+        )
+    }
+}
+
+
+export const createService = async (param) => {
+    try {
+        await axios.post(`http://localhost:8080/facility`, param);
+    } catch (e) {
         console.log(e);
     }
 }
@@ -38,8 +48,8 @@ export const findAllRentalType = async () => {
 
 export const deleteFacility = async (id) => {
     try {
-        await axios.delete(`http://localhost:8080/facility/`+id);
-    }catch (e) {
+        await axios.delete(`http://localhost:8080/facility/` + id);
+    } catch (e) {
         console.log(e);
     }
 }
@@ -48,7 +58,7 @@ export const deleteFacility = async (id) => {
 export const findAllService = async () => {
     try {
         return (await axios.get(`http://localhost:8080/facility`)).data;
-    }catch (e) {
+    } catch (e) {
         console.log(e);
     }
 }

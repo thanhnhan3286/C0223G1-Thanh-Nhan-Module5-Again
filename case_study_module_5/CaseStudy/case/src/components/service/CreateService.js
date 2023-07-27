@@ -9,16 +9,17 @@ import Swal from "sweetalert2";
 
 export function CreateService() {
     const navigate = useNavigate()
-    const [type, setType] = useState([]);
+    const [types, setTypes] = useState([]);
     const [typeService, setTypeService] = useState("1");
+    console.log(typeService);
     const [rentalType, setRentalType] = useState([]);
     const [roomStandard, setRoomStandard] = useState([]);
     const fetchApi = async () => {
-        const rentalTypeList = await facilityService.findAllRentalType()
+        const rentalTypeList = await facilityService.findAllRentalType();
         setRentalType(rentalTypeList);
-        const facilityType = await facilityService.findAllFacilityType()
-        setType(facilityType);
-        const roomStandard = await facilityService.findAllRoomStandard()
+        const facilityType = await facilityService.findAllFacilityType();
+        setTypes(facilityType);
+        const roomStandard = await facilityService.findAllRoomStandard();
         setRoomStandard(roomStandard);
     }
     useEffect(() => {
@@ -81,7 +82,7 @@ export function CreateService() {
                 onSubmit={(values, {setSubmitting, resetForm}) => {
                     setSubmitting(false)
                     const create = async () => {
-                        await facilityService.create({
+                        await facilityService.createService({
                             ...values,
                             typeId: +values.typeId,
                             rentalTypeId: +values.rentalTypeId,
@@ -116,7 +117,7 @@ export function CreateService() {
                                             <span className="input-group-text">Service Type</span>
                                         </div>
                                         <Field
-                                            onKeyUp={(event) => setTypeService(event.target.value)}
+                                            onClick={(event) => setTypeService(event.target.value)}
                                             as="select"
                                             name="typeId"
                                             className="form-control"
@@ -125,7 +126,7 @@ export function CreateService() {
                                         >
                                             <option value={0}>--Choose service type--</option>
                                             {
-                                                type.map((type) => (
+                                                types.map((type) => (
                                                     <option key={type.id} value={type.id}>{type.name}</option>
                                                 ))
                                             }
@@ -150,7 +151,7 @@ export function CreateService() {
                                     <ErrorMessage name="name" component='span' className="error-mess m-lg-3"/>
                                     <div className="input-group input-group-sm mg">
                                         <div className="input-group-prepend">
-                                            <span className="input-group-text">User Area</span>
+                                            <span className="input-group-text">User Area (m<sup>2</sup> )</span>
                                         </div>
                                         <Field
                                             type="number"
@@ -188,7 +189,8 @@ export function CreateService() {
                                             aria-describedby="inputGroup-sizing-sm"
                                         />
                                     </div>
-                                    <ErrorMessage name="maxNumberOfPeople" component='span' className="error-mess m-lg-3"/>
+                                    <ErrorMessage name="maxNumberOfPeople" component='span'
+                                                  className="error-mess m-lg-3"/>
                                     <div className="input-group input-group-sm mg">
                                         <div className="input-group-prepend">
                                             <span className="input-group-text">Rental Type</span>
@@ -204,77 +206,117 @@ export function CreateService() {
                                         </Field>
                                     </div>
                                     <ErrorMessage name="rentalTypeId" component='span' className="error-mess m-lg-3"/>
-                                    <div className="input-group input-group-sm mg">
-                                        <div className="input-group-prepend">
-                                            <span className="input-group-text">Room Standard</span>
-                                        </div>
-                                        <select className="form-select">
-                                            <option>Normal</option>
-                                            <option>Business</option>
-                                            <option>Presidential</option>
-                                        </select>
-                                    </div>
-                                    <div className="input-group input-group-sm mg">
-                                        <div className="input-group-prepend">
-                                            <span className="input-group-text">Other Utilities</span>
-                                        </div>
-                                        <input
-                                            type="text"
-                                            className="form-control"
-                                            aria-label="Small"
-                                            aria-describedby="inputGroup-sizing-sm"
-                                        />
-                                    </div>
-                                    <div className="input-group input-group-sm mg">
-                                        <div className="input-group-prepend">
-                                            <span className="input-group-text">Quantity Of Floor</span>
-                                        </div>
-                                        <input
-                                            type="number"
-                                            min={1}
-                                            max={10}
-                                            className="form-control"
-                                            aria-label="Small"
-                                            aria-describedby="inputGroup-sizing-sm"
-                                        />
-                                    </div>
-                                    <div className="input-group input-group-sm mg">
-                                        <div className="input-group-prepend">
-                                            <span className="input-group-text">Pool Area</span>
-                                        </div>
-                                        <input
-                                            type="number"
-                                            min={40}
-                                            max={1000}
-                                            className="form-control"
-                                            aria-label="Small"
-                                            aria-describedby="inputGroup-sizing-sm"
-                                        />
-                                    </div>
+                                    {
+                                        typeService === "3" ?
+                                            '' :
+                                            <div>
+                                                <div className="input-group input-group-sm mg">
+                                                    <div className="input-group-prepend">
+                                                        <span className="input-group-text">Room Standard</span>
+                                                    </div>
+                                                    <Field
+                                                        as="select"
+                                                        name="roomStandardId"
+                                                        className="form-control"
+                                                        aria-label="Small"
+                                                        aria-describedby="inputGroup-sizing-sm"
+                                                        required=""
+                                                    >
+                                                        <option value={0}>--Choose room standard--</option>
+                                                        {
+                                                            roomStandard.map((roomStandard) => (
+                                                                <option key={roomStandard.id}
+                                                                        value={roomStandard.id}>{roomStandard.name}</option>
+                                                            ))
+                                                        }
+                                                    </Field>
+                                                </div>
+                                                <ErrorMessage name="roomStandardId" component='span'
+                                                              className="error-mess m-lg-3"/>
+                                                <div className="input-group input-group-sm mg">
+                                                    <div className="input-group-prepend">
+                                                        <span className="input-group-text">Other Utilities</span>
+                                                    </div>
+                                                    <Field
+                                                        type="text"
+                                                        name="otherUtilities"
+                                                        className="form-control"
+                                                        aria-label="Small"
+                                                        aria-describedby="inputGroup-sizing-sm"
+                                                    />
+                                                </div>
+                                                <ErrorMessage name="otherUtilities" component='span'
+                                                              className="error-mess m-lg-3"/>
+                                                <div className="input-group input-group-sm mg">
+                                                    <div className="input-group-prepend">
+                                                        <span className="input-group-text">Quantity Of Floor</span>
+                                                    </div>
+                                                    <Field
+                                                        type="number"
+                                                        name="quantityOfFloor"
+                                                        min={1}
+                                                        max={10}
+                                                        className="form-control"
+                                                        aria-label="Small"
+                                                        aria-describedby="inputGroup-sizing-sm"
+                                                    />
+                                                </div>
+                                                <ErrorMessage name="quantityOfFloor" component='span'
+                                                              className="error-mess m-lg-3"/>
+                                            </div>
+                                    }
+                                    {
+                                        typeService === "1" ?
+                                            <div>
+                                                <div className="input-group input-group-sm mg">
+                                                    <div className="input-group-prepend">
+                                                        <span className="input-group-text">Pool Area (m<sup>2</sup>)</span>
+                                                    </div>
+                                                    <Field
+                                                        type="number"
+                                                        name="areaOfPool"
+                                                        min={40}
+                                                        max={1000}
+                                                        className="form-control"
+                                                        aria-label="Small"
+                                                        aria-describedby="inputGroup-sizing-sm"
+                                                    />
+                                                </div>
+                                                <ErrorMessage name="areaOfPool" component='span'
+                                                              className="error-mess m-lg-3"/>
+                                            </div>
+                                            : ""
+                                    }
+
                                     <div className="input-group input-group-sm mg">
                                         <div className="input-group-prepend">
                                             <span className="input-group-text">Free Service Included</span>
                                         </div>
-                                        <input
+                                        <Field
                                             type="text"
+                                            name="freeServiceIncluded"
                                             className="form-control"
                                             aria-label="Small"
                                             aria-describedby="inputGroup-sizing-sm"
                                         />
                                     </div>
+                                    <ErrorMessage name="freeServiceIncluded" component='span'
+                                                  className="error-mess m-lg-3"/>
                                     <div className="input-group input-group-sm mg">
                                         <div className="input-group-prepend">
                                             <span className="input-group-text">URL Image</span>
                                         </div>
-                                        <input
+                                        <Field
                                             type="text"
+                                            name="image"
                                             className="form-control"
                                             aria-label="Small"
                                             aria-describedby="inputGroup-sizing-sm"
                                         />
                                     </div>
+                                    <ErrorMessage name="image" component='span' className="error-mess m-lg-3"/>
                                     <br/>
-                                    <div style={{textAlign: "center", marginBottom: 30}}>
+                                    <div className="text-center mb-3">
                                         <button type="submit" className="btn btn-success">
                                             ADD
                                         </button>
@@ -284,9 +326,7 @@ export function CreateService() {
                         </div>
                     )
                 }
-
             </Formik>
-
         </>
     )
 }

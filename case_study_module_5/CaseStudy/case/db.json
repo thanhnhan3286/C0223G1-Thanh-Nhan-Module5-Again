@@ -1,21 +1,6 @@
 {
   "facility": [
     {
-      "id": 1,
-      "typeId": 3,
-      "name": "OCEAN SUITE",
-      "useArea": 84.8,
-      "rentalCosts": 500000,
-      "maxNumberOfPeople": 10,
-      "rentalTypeId": 1,
-      "roomStandardId": 2,
-      "otherUtilities": "",
-      "areaOfPool": 0,
-      "quantityOfFloor": 0,
-      "freeServiceIncluded": "ĂN sáng, Buffer trưa, Ăn tối (ngày đầu)",
-      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-370x239.jpg"
-    },
-    {
       "id": 2,
       "typeId": 3,
       "name": "OCEAN STUDIO SUITE",
@@ -28,7 +13,7 @@
       "quantityOfFloor": 0,
       "areaOfPool": 49,
       "freeServiceIncluded": "ĂN sáng, Buffer trưa, Ăn tối (ngày đầu)",
-      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-370x239.jpg"
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama_Ocean_Deluxe-2-450x291.jpg"
     },
     {
       "id": 3,
@@ -44,6 +29,36 @@
       "quantityOfFloor": 0,
       "freeServiceIncluded": "ĂN sáng, Buffer trưa, Ăn tối (ngày đầu)",
       "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-370x239.jpg"
+    },
+    {
+      "typeId": 1,
+      "name": "Villa Huong Doi",
+      "useArea": 45,
+      "rentalCosts": 1000,
+      "maxNumberOfPeople": 23,
+      "rentalTypeId": 1,
+      "roomStandardId": 1,
+      "otherUtilities": "Đầy đủ tiện nghi",
+      "quantityOfFloor": 2,
+      "areaOfPool": 45,
+      "freeServiceIncluded": "ĂN sáng, Buffer trưa, Ăn tối (ngày đầu)",
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/08/Vietnam_Danang_Furama_Villas_Beach_Pool_Villas-_Exterior-1-F-370x239.jpg",
+      "id": 4
+    },
+    {
+      "typeId": 1,
+      "name": "Villa moi",
+      "useArea": 45,
+      "rentalCosts": 4500,
+      "maxNumberOfPeople": 10,
+      "rentalTypeId": 3,
+      "roomStandardId": 3,
+      "otherUtilities": "12332",
+      "quantityOfFloor": 3,
+      "areaOfPool": 56,
+      "freeServiceIncluded": "1231",
+      "image": "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/images/723978/723978/FV_Balcony_Three_Bedroom_Villa.jpg?auto=format,compress&fit=crop&crop=entropy&w=1536&q=75",
+      "id": 5
     }
   ],
   "type": [
@@ -66,33 +81,33 @@
   "rentalType": [
     {
       "id": 1,
-      "name": "Năm"
+      "name": "Year"
     },
     {
       "id": 2,
-      "name": "Tháng"
+      "name": "Month"
     },
     {
       "id": 3,
-      "name": "Ngày"
+      "name": "Day"
     },
     {
       "id": 4,
-      "name": "Giờ"
+      "name": "Hour"
     }
   ],
   "roomStandard": [
     {
       "id": 1,
-      "name": "Thường"
+      "name": "Normal"
     },
     {
       "id": 2,
-      "name": "Thương gia"
+      "name": "Business"
     },
     {
       "id": 3,
-      "name": "Tổng thống"
+      "name": "Presidential"
     }
   ],
   "customer": [
@@ -188,15 +203,15 @@
   "gender": [
     {
       "id": 1,
-      "gender": "Nữ"
+      "gender": "Girl"
     },
     {
       "id": 2,
-      "gender": "Nam"
+      "gender": "Boy"
     },
     {
       "id": 3,
-      "gender": "Khác"
+      "gender": "Other"
     }
   ],
   "contract": [

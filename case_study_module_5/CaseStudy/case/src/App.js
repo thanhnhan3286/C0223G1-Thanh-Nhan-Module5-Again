@@ -17,23 +17,16 @@ function App() {
     return (
         <>
             <Header/>
-            {/*<Navigation/>*/}
             <Routes>
                 <Route path={`/`} element={<ListService/>}/>
                 <Route path={`/serviceCreate`} element={<CreateService/>}/>
-                <Route path={`/serviceEdit`} element={<EditService/>}/>
+                <Route path={`/serviceEdit/:id`} element={<EditService/>}/>
                 <Route path={`/customerList`} element={<ListCustomer/>}/>
                 <Route path={`/contractList`} element={<ListContract/>}/>
                 <Route path={`/contractCreate`} element={<CreateContract/>}/>
                 <Route path={`/customerCreate`} element={<CreateCustomer/>}/>
-                <Route path={`/customerEdit`} element={<EditCustomer/>}/>
+                <Route path={`/customerEdit/:id`} element={<EditCustomer/>}/>
             </Routes>
-            {/*<CreateContract/>*/}
-            {/*<CreateCustomer/>*/}
-{/*<ListContract/>*/}
-
-            {/*<ListService/>*/}
-            {/*<ListCustomer/>*/}
             <Footer/>
         </>
     );

@@ -1,19 +1,52 @@
 import "./create_edit.css"
-import React from "react";
-// import "bootstrap/dist/css/bootstrap.css"
+import React, {useEffect, useState} from "react";
+import {useParams} from "react-router";
+import * as facilityService from "../../service/FacilityService"
+import {Formik} from "formik";
 
 export function EditService() {
+    const param = useParams();
+    const [service, setService] = useState();
+    const getService = async (id) => {
+        const res = await facilityService.findById(id);
+        console.log(res)
+        setService(res);
+    };
+    useEffect(() => {
+        getService(param.id).then(r => null);
+    }, [param.id]);
+    if (!service) {
+        return null
+    }
     return (
         <>
+            <Formik
+                initialValues={{
+                    id: service?.id,
+                    typeId: service?.typeId,
+                    name: service?.name,
+                    useArea: service?.useArea,
+                    rentalCosts: service?.rentalCosts,
+                    maxNumberOfPeople: service?.maxNumberOfPeople,
+                    rentalTypeId: service?.rentalTypeId,
+                    roomStandardId: service?.roomStandardId,
+                    otherUtilities: service?.otherUtilities,
+                    quantityOfFloor: service?.quantityOfFloor,
+                    areaOfPool: service?.areaOfPool,
+                    freeServiceIncluded: service?.freeServiceIncluded,
+                    image: service?.image
+                }}>
+
+            </Formik>
             <div
                 className="container boxed "
-                style={{ marginTop: "2%", width: 700, height: "auto" }}
+                style={{marginTop: "2%", width: 700, height: "auto"}}
             >
-                <h2 style={{ textAlign: "center", marginTop: 20 }}> EDIT SERVICE</h2>
+                <h2 style={{textAlign: "center", marginTop: 20}}> EDIT SERVICE</h2>
                 <div
                     id="form"
                     className="form"
-                    style={{ marginLeft: "10%", marginRight: "10%" }}
+                    style={{marginLeft: "10%", marginRight: "10%"}}
                 >
                     <form action="#" method="POST" noValidate="novalidate">
                         <div className="input-group input-group-sm mg">
@@ -28,7 +61,7 @@ export function EditService() {
                         </div>
                         <div
                             className="input-group input-group-sm mg"
-                            style={{ marginTop: 30 }}
+                            style={{marginTop: 30}}
                         >
                             <div className="input-group-prepend">
                                 <span className="input-group-text">Service Name</span>
@@ -165,8 +198,8 @@ export function EditService() {
                                 aria-describedby="inputGroup-sizing-sm"
                             />
                         </div>
-                        <br />
-                        <div style={{ textAlign: "center", marginBottom: 30 }}>
+                        <br/>
+                        <div style={{textAlign: "center", marginBottom: 30}}>
                             <button type="submit" className="btn btn-success">
                                 EDIT
                             </button>

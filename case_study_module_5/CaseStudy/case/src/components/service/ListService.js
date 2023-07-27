@@ -41,9 +41,7 @@ export function ListService() {
                 deleteServiceApi(id).then(r => null);
             }
         })
-
     }
-
     return (
         <>
             <Navigation/>
@@ -82,10 +80,8 @@ export function ListService() {
                                             </div>
                                             <div className="col-auto mt-0 justify-content-between d-flex">
                                                 <div style={{paddingRight: "10px"}}>
-                                                    <Link
-                                                        className="btn btn-success room-qview border-0"
-                                                        // style={{backgroundColor: "#0d6056",}}
-                                                        to={"/"}>
+                                                    <Link to={`/serviceEdit/${facility.id}`} type="button"
+                                                        className="btn btn-success room-qview border-0">
                                                         EDIT
                                                     </Link>
                                                 </div>
