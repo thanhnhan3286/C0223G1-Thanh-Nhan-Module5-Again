@@ -18,12 +18,14 @@ body {
     font-style: normal;
     font-weight: 400;
     letter-spacing: 0;
-    padding: 1rem;
 }
 
 .main {
     max-width: 1200px;
     margin: 0 auto;
+}
+.text-center {
+    text-align: center !important;
 }
 
 h1 {
@@ -97,7 +99,7 @@ img {
 
 .card_title {
     color:  #000000;
-    font-size: 1.1rem;
+    font-size: 25px;
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: capitalize;

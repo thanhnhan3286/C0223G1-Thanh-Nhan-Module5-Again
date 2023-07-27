@@ -25,7 +25,9 @@
     background-color: white;
     border-radius: 20px;
 }
-
+.error-mess{
+    color: red;
+}
 .boxed:before {
     content: "";
     position: absolute;

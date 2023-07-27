@@ -1,19 +1,61 @@
+import React, {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
+import * as contractService from "../../service/ContractService"
+import * as customerService from "../../service/CustomerService"
+
+
 export function ListContract() {
+    const [contracts, setContracts] = useState([]);
+    const [customers, setCustomers] = useState([]);
+    const getAllContract = async () => {
+        const res = await contractService.findAllContract();
+        setContracts(res);
+    };
+    const getAllCustomer = async () => {
+        const res = await customerService.findAllCustomer();
+        setCustomers(res);
+    };
+
+    useEffect(() => {
+        getAllContract().then(r => null);
+        getAllCustomer().then(r => null);
+    }, [])
     return (
         <>
-            <div className="row room-grid text-center" style={{margin: "0 10%"}}>
-                <h1 className="mt-5">List Contract</h1>
-                <a href="http://localhost:63342/CaseStudy/prototype/contract/CreateContract.html?_ijt=50e36da1o38qlm9k98qvbpb2ce">
-                    <button
-                        type="button"
-                        className="btn btn-primary text-capitalize"
-                        data-bs-toggle="modal"
-                        fdprocessedid="q2sbyt"
-                    >
-                        CREATE
-                        {/*                                            th:attr="onclick=|detail('${productCoffeeModelPage.id}','${productCoffeeModelPage.nameProduct}')|">Detail*/}
-                    </button>
-                </a>
+            <header>
+                <div id="indicators" className="carousel " data-ride="carousel">
+                    <div className="carousel-inner" role="listbox">
+                        <div className="carousel-item active img">
+                            <img
+                                className="img"
+                                src="https://mybeautifuladventures.com/wp-content/uploads/2021/09/viceroy-bali-main-pool-evening.jpg"
+                                style={{width: "100%", height: "350px"}}
+                                alt=""
+                            />
+                            <div className="carousel-caption d-none d-md-block">
+                                <h1 className="display-2 h2-form" style={{fontSize: "60px", color: "white"}}>
+                                    CONTRACT LIST
+                                </h1>
+                                <div className="justify-content-center">
+                                    <Link to={`/contractCreate`}
+                                          type="button"
+                                          className="btn btn-secondary text-center"
+                                          style={{
+                                              backgroundColor: "#36333d",
+                                              fontSize: 20,
+                                              color: "white"
+                                          }}
+                                    >
+                                        CREATE
+                                    </Link>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div className="row room-grid text-center" style={{margin: "2% 10%"}}>
                 <div className="tab-content" id="orders-table-tab-content">
                     <div
                         className="tab-pane fade show active"
@@ -37,20 +79,17 @@ export function ListContract() {
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <th className="text-center">1</th>
-                                            <th>Đỗ Thành Nhân</th>
-                                            <th>06/03/2023</th>
-                                            <th>12/03/2023</th>
-                                            <th>1200</th>
-                                        </tr>
-                                        <tr>
-                                            <th className="text-center">2</th>
-                                            <th>Huỳnh Đức Định</th>
-                                            <th>06/08/2023</th>
-                                            <th>24/08/2023</th>
-                                            <th>90000</th>
-                                        </tr>
+                                        {
+                                            contracts.map((contract, index) => (
+                                                <tr key={index}>
+                                                    <th className="text-center">{contract.id}</th>
+                                                    <th>{customers.find((c) => c.id === contract.customerId)?.name}</th>
+                                                    <th>{contract.startDay}</th>
+                                                    <th>{contract.endDay}</th>
+                                                    <th className="text-center">{contract.deposit}</th>
+                                                </tr>
+                                            ))
+                                        }
                                         </tbody>
                                     </table>
                                 </div>

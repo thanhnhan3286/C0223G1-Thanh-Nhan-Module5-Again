@@ -1,167 +1,292 @@
+import "./create_edit.css"
+import React, {useEffect, useState} from "react";
+import {useNavigate} from "react-router";
+import * as facilityService from "../../service/FacilityService"
+import {ErrorMessage, Field, Form, Formik} from "formik";
+import * as Yup from "yup";
+import Swal from "sweetalert2";
 
-import React from "react";
+
 export function CreateService() {
+    const navigate = useNavigate()
+    const [type, setType] = useState([]);
+    const [typeService, setTypeService] = useState("1");
+    const [rentalType, setRentalType] = useState([]);
+    const [roomStandard, setRoomStandard] = useState([]);
+    const fetchApi = async () => {
+        const rentalTypeList = await facilityService.findAllRentalType()
+        setRentalType(rentalTypeList);
+        const facilityType = await facilityService.findAllFacilityType()
+        setType(facilityType);
+        const roomStandard = await facilityService.findAllRoomStandard()
+        setRoomStandard(roomStandard);
+    }
+    useEffect(() => {
+        fetchApi().then(r => null)
+    }, [])
     return (
         <>
-            <div
-                className="container boxed"
-                style={{ marginTop: "2%", width: 700, height: "auto" }}
+            <Formik
+                initialValues={{
+                    typeId: 0,
+                    name: '',
+                    useArea: 0,
+                    rentalCosts: 0,
+                    maxNumberOfPeople: 0,
+                    rentalTypeId: 0,
+                    roomStandardId: 0,
+                    otherUtilities: '',
+                    quantityOfFloor: 0,
+                    areaOfPool: 0,
+                    freeServiceIncluded: '',
+                    image: ''
+                }}
+                validationSchema={Yup.object({
+                    typeId: Yup.number().required('Required').min(1, 'No service type selected'),
+                    name: Yup.string()
+                        .required('Required'),
+                    useArea: Yup.number()
+                        .required('Required')
+                        .min(40, 'Min: 40m2'),
+                    rentalCosts: Yup.number()
+                        .required('Required')
+                        .min(1000, 'Min: 1000')
+                        .max(990000000, 'Max: 10000000'),
+                    maxNumberOfPeople: Yup.number()
+                        .required('Required')
+                        .min(2, 'Min: 2')
+                        .max(30, 'Max: 30'),
+                    rentalTypeId: Yup.number().required('Required').min(1, 'No rental type selected'),
+                    roomStandardId: Yup.number().test('required-if-typeFacility-is-3', 'No room standard selected', function (value) {
+                        if (typeService !== "3") {
+                            return Yup.number().required('Required').min(1).isValidSync(value);
+                        }
+                        return true;
+                    }),
+                    otherUtilities: Yup.string(),
+                    quantityOfFloor: Yup.number().test('required-if-typeFacility-is-3', 'The floor number has not been entered', function (value) {
+                        if (typeService !== "3") {
+                            return Yup.number().required('Required').min(1).max(10, 'Min 10').isValidSync(value);
+                        }
+                        return true;
+                    }),
+                    image: Yup.string().required('Required'),
+                    areaOfPool: Yup.number().test('required-if-typeFacility-is-1', 'Pool area must be greater than 0', function (value) {
+                        if (typeService === "1") {
+                            return Yup.number().required('Required').min(1,).isValidSync(value);
+                        }
+                        return true;
+                    }),
+                })}
+                onSubmit={(values, {setSubmitting, resetForm}) => {
+                    setSubmitting(false)
+                    const create = async () => {
+                        await facilityService.create({
+                            ...values,
+                            typeId: +values.typeId,
+                            rentalTypeId: +values.rentalTypeId,
+                            roomStandardId: +values.roomStandardId
+                        })
+                        navigate("/")
+                        await Swal.fire({
+                            icon: "success",
+                            title: "ADDED!!!",
+                            timer: 2000
+                        })
+                        resetForm();
+                    }
+                    create().then(r => null);
+                }}
             >
-                <h2 style={{ textAlign: "center", marginTop: 20 }}> CREATE NEW SERVICE</h2>
-                <div
-                    id="form"
-                    className="form"
-                    style={{ marginLeft: "10%", marginRight: "10%" }}
-                >
-                    <form action="#" method="POST" noValidate="novalidate">
-                        <div className="input-group input-group-sm mg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">Service Type</span>
-                            </div>
-                            <select className="form-select">
-                                <option>Villa</option>
-                                <option>House</option>
-                                <option>Room</option>
-                            </select>
-                        </div>
+                {
+                    ({isSubmitting}) => (
                         <div
-                            className="input-group input-group-sm mg"
-                            style={{ marginTop: 30 }}
+                            className="container boxed"
+                            style={{marginTop: "2%", width: 700, height: "auto"}}
                         >
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">Service Name</span>
+                            <h2 style={{textAlign: "center", marginTop: 20}}> CREATE NEW SERVICE</h2>
+                            <div
+                                id="form"
+                                className="form"
+                                style={{marginLeft: "10%", marginRight: "10%"}}
+                            >
+                                <Form>
+                                    <div className="input-group input-group-sm mg text-center">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text">Service Type</span>
+                                        </div>
+                                        <Field
+                                            onKeyUp={(event) => setTypeService(event.target.value)}
+                                            as="select"
+                                            name="typeId"
+                                            className="form-control"
+                                            aria-label="Small"
+                                            aria-describedby="inputGroup-sizing-sm"
+                                        >
+                                            <option value={0}>--Choose service type--</option>
+                                            {
+                                                type.map((type) => (
+                                                    <option key={type.id} value={type.id}>{type.name}</option>
+                                                ))
+                                            }
+                                        </Field>
+                                    </div>
+                                    <ErrorMessage name="typeId" component="span" className="error-mess m-lg-3"/>
+                                    <div
+                                        className="input-group input-group-sm mg"
+                                        style={{marginTop: 30}}
+                                    >
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text">Service Name</span>
+                                        </div>
+                                        <Field
+                                            type="text"
+                                            name="name"
+                                            className="form-control"
+                                            aria-label="Small"
+                                            aria-describedby="inputGroup-sizing-sm"
+                                        />
+                                    </div>
+                                    <ErrorMessage name="name" component='span' className="error-mess m-lg-3"/>
+                                    <div className="input-group input-group-sm mg">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text">User Area</span>
+                                        </div>
+                                        <Field
+                                            type="number"
+                                            name="useArea"
+                                            className="form-control"
+                                            aria-label="Small"
+                                            aria-describedby="inputGroup-sizing-sm"
+                                        />
+                                    </div>
+                                    <ErrorMessage name="useArea" component='span' className="error-mess m-lg-3"/>
+                                    <div className="input-group input-group-sm mg">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text">Rental Cost ($)</span>
+                                        </div>
+                                        <Field
+                                            type="number"
+                                            name="rentalCosts"
+                                            className="form-control"
+                                            aria-label="Small"
+                                            aria-describedby="inputGroup-sizing-sm"
+                                        />
+                                    </div>
+                                    <ErrorMessage name="rentalCosts" component='span' className="error-mess m-lg-3"/>
+                                    <div className="input-group input-group-sm mg">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text">Max People</span>
+                                        </div>
+                                        <Field
+                                            type="number"
+                                            name="maxNumberOfPeople"
+                                            min={2}
+                                            max={30}
+                                            className="form-control"
+                                            aria-label="Small"
+                                            aria-describedby="inputGroup-sizing-sm"
+                                        />
+                                    </div>
+                                    <ErrorMessage name="maxNumberOfPeople" component='span' className="error-mess m-lg-3"/>
+                                    <div className="input-group input-group-sm mg">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text">Rental Type</span>
+                                        </div>
+                                        <Field as="select" className="form-select" name="rentalTypeId">
+                                            <option value={0}>--Choose rental type--</option>
+                                            {
+                                                rentalType.map((rentalType) => (
+                                                    <option key={rentalType.id}
+                                                            value={rentalType.id}>{rentalType.name}</option>
+                                                ))
+                                            }
+                                        </Field>
+                                    </div>
+                                    <ErrorMessage name="rentalTypeId" component='span' className="error-mess m-lg-3"/>
+                                    <div className="input-group input-group-sm mg">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text">Room Standard</span>
+                                        </div>
+                                        <select className="form-select">
+                                            <option>Normal</option>
+                                            <option>Business</option>
+                                            <option>Presidential</option>
+                                        </select>
+                                    </div>
+                                    <div className="input-group input-group-sm mg">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text">Other Utilities</span>
+                                        </div>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            aria-label="Small"
+                                            aria-describedby="inputGroup-sizing-sm"
+                                        />
+                                    </div>
+                                    <div className="input-group input-group-sm mg">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text">Quantity Of Floor</span>
+                                        </div>
+                                        <input
+                                            type="number"
+                                            min={1}
+                                            max={10}
+                                            className="form-control"
+                                            aria-label="Small"
+                                            aria-describedby="inputGroup-sizing-sm"
+                                        />
+                                    </div>
+                                    <div className="input-group input-group-sm mg">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text">Pool Area</span>
+                                        </div>
+                                        <input
+                                            type="number"
+                                            min={40}
+                                            max={1000}
+                                            className="form-control"
+                                            aria-label="Small"
+                                            aria-describedby="inputGroup-sizing-sm"
+                                        />
+                                    </div>
+                                    <div className="input-group input-group-sm mg">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text">Free Service Included</span>
+                                        </div>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            aria-label="Small"
+                                            aria-describedby="inputGroup-sizing-sm"
+                                        />
+                                    </div>
+                                    <div className="input-group input-group-sm mg">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text">URL Image</span>
+                                        </div>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            aria-label="Small"
+                                            aria-describedby="inputGroup-sizing-sm"
+                                        />
+                                    </div>
+                                    <br/>
+                                    <div style={{textAlign: "center", marginBottom: 30}}>
+                                        <button type="submit" className="btn btn-success">
+                                            ADD
+                                        </button>
+                                    </div>
+                                </Form>
                             </div>
-                            <input
-                                type="text"
-                                className="form-control"
-                                aria-label="Small"
-                                aria-describedby="inputGroup-sizing-sm"
-                            />
                         </div>
-                        <div className="input-group input-group-sm mg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">User Area</span>
-                            </div>
-                            <input
-                                type="text"
-                                className="form-control"
-                                aria-label="Small"
-                                aria-describedby="inputGroup-sizing-sm"
-                            />
-                        </div>
-                        <div className="input-group input-group-sm mg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">Rental Cost</span>
-                            </div>
-                            <input
-                                type="number"
-                                className="form-control"
-                                aria-label="Small"
-                                aria-describedby="inputGroup-sizing-sm"
-                            />
-                        </div>
-                        <div className="input-group input-group-sm mg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">Max People</span>
-                            </div>
-                            <input
-                                type="number"
-                                min={2}
-                                max={30}
-                                className="form-control"
-                                aria-label="Small"
-                                aria-describedby="inputGroup-sizing-sm"
-                            />
-                        </div>
-                        <div className="input-group input-group-sm mg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">Rental Type</span>
-                            </div>
-                            <select className="form-select">
-                                <option>Year</option>
-                                <option>Month</option>
-                                <option>Day</option>
-                                <option>Hour</option>
-                            </select>
-                        </div>
-                        <div className="input-group input-group-sm mg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">Room Standard</span>
-                            </div>
-                            <select className="form-select">
-                                <option>Normal</option>
-                                <option>Business</option>
-                                <option>Presidential</option>
-                            </select>
-                        </div>
-                        <div className="input-group input-group-sm mg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">Other Utilities</span>
-                            </div>
-                            <input
-                                type="text"
-                                className="form-control"
-                                aria-label="Small"
-                                aria-describedby="inputGroup-sizing-sm"
-                            />
-                        </div>
-                        <div className="input-group input-group-sm mg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">Quantity Of Floor</span>
-                            </div>
-                            <input
-                                type="number"
-                                min={1}
-                                max={10}
-                                className="form-control"
-                                aria-label="Small"
-                                aria-describedby="inputGroup-sizing-sm"
-                            />
-                        </div>
-                        <div className="input-group input-group-sm mg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">Pool Area</span>
-                            </div>
-                            <input
-                                type="number"
-                                min={40}
-                                max={1000}
-                                className="form-control"
-                                aria-label="Small"
-                                aria-describedby="inputGroup-sizing-sm"
-                            />
-                        </div>
-                        <div className="input-group input-group-sm mg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">Free Service Included</span>
-                            </div>
-                            <input
-                                type="text"
-                                className="form-control"
-                                aria-label="Small"
-                                aria-describedby="inputGroup-sizing-sm"
-                            />
-                        </div>
-                        <div className="input-group input-group-sm mg">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">URL Image</span>
-                            </div>
-                            <input
-                                type="text"
-                                className="form-control"
-                                aria-label="Small"
-                                aria-describedby="inputGroup-sizing-sm"
-                            />
-                        </div>
-                        <br />
-                        <div style={{ textAlign: "center", marginBottom: 30 }}>
-                            <button type="submit" className="btn btn-success">
-                                ADD
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+                    )
+                }
+
+            </Formik>
+
         </>
     )
 }

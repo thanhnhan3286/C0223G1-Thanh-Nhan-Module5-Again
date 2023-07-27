@@ -3,7 +3,7 @@
     {
       "id": 1,
       "typeId": 3,
-      "name": "PHÒNG SUITE HƯỚNG BIỂN",
+      "name": "OCEAN SUITE",
       "useArea": 84.8,
       "rentalCosts": 500000,
       "maxNumberOfPeople": 10,
@@ -18,7 +18,7 @@
     {
       "id": 2,
       "typeId": 3,
-      "name": "PHÒNG SUITE HƯỚNG BIỂN",
+      "name": "OCEAN STUDIO SUITE",
       "useArea": 84.8,
       "rentalCosts": 50000,
       "maxNumberOfPeople": 10,
@@ -33,7 +33,7 @@
     {
       "id": 3,
       "typeId": 3,
-      "name": "PHÒNG SUPERIOR HƯỚNG HỒ",
+      "name": "OCEAN DELUXE",
       "useArea": 84.8,
       "rentalCosts": 50000,
       "maxNumberOfPeople": 10,
@@ -42,36 +42,6 @@
       "otherUtilities": "",
       "areaOfPool": 0,
       "quantityOfFloor": 0,
-      "freeServiceIncluded": "ĂN sáng, Buffer trưa, Ăn tối (ngày đầu)",
-      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-370x239.jpg"
-    },
-    {
-      "id": 4,
-      "typeId": 3,
-      "name": "PHÒNG SUITE HƯỚNG BIỂN",
-      "useArea": 84.8,
-      "rentalCosts": 6000,
-      "maxNumberOfPeople": 10,
-      "rentalTypeId": 1,
-      "roomStandardId": 2,
-      "otherUtilities": "",
-      "quantityOfFloor": 0,
-      "areaOfPool": 0,
-      "freeServiceIncluded": "ĂN sáng, Buffer trưa, Ăn tối (ngày đầu)",
-      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-370x239.jpg"
-    },
-    {
-      "id": 5,
-      "typeId": 1,
-      "name": "VILA SUITE HƯỚNG BIỂN",
-      "useArea": 300,
-      "rentalCosts": 50000,
-      "maxNumberOfPeople": 10,
-      "rentalTypeId": 2,
-      "roomStandardId": 1,
-      "otherUtilities": "Đầy đủ tiện nghi",
-      "quantityOfFloor": 0,
-      "areaOfPool": 49,
       "freeServiceIncluded": "ĂN sáng, Buffer trưa, Ăn tối (ngày đầu)",
       "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-370x239.jpg"
     }
@@ -233,7 +203,7 @@
     {
       "id": 1,
       "contractCode": "HO-12356",
-      "customerId": 3,
+      "customerId": 7,
       "facilityId": 1,
       "startDay": "21-01-2023",
       "endDay": "21-02-2023",
