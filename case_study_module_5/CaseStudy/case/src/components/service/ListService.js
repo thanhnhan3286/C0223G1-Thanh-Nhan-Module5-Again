@@ -17,7 +17,7 @@ export function ListService() {
     }, []);
 
     const deleteServiceApi = async (id) => {
-        await facilityService.deleteFacility(id);
+        await facilityService.deleteService(id);
         await getAllService();
         await Swal.fire({
             title: "DELETED!!!",
@@ -54,10 +54,12 @@ export function ListService() {
                                         <img
                                             width={370}
                                             height={239}
-                                            src="https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Studio-Suite-F-370x239.jpg"
+                                            src={facility.image}
+                                            // src="https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Studio-Suite-F-370x239.jpg"
                                             className="img-fluid wp-post-image"
                                             alt=""
                                             sizes="(max-width: 370px) 100vw, 370px"
+                                            style={{width:"370px", height:"239px"}}
                                         />
                                         <div className="flex-wrap-center"></div>
                                     </div>

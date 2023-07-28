@@ -25,8 +25,8 @@
       "rentalTypeId": 3,
       "roomStandardId": 3,
       "otherUtilities": "",
-      "areaOfPool": 0,
       "quantityOfFloor": 0,
+      "areaOfPool": 0,
       "freeServiceIncluded": "ĂN sáng, Buffer trưa, Ăn tối (ngày đầu)",
       "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-370x239.jpg"
     },
@@ -59,6 +59,36 @@
       "freeServiceIncluded": "1231",
       "image": "https://tbb-prod-apac.imgix.net/attachments/room_type_photos/images/723978/723978/FV_Balcony_Three_Bedroom_Villa.jpg?auto=format,compress&fit=crop&crop=entropy&w=1536&q=75",
       "id": 5
+    },
+    {
+      "typeId": 3,
+      "name": "\tASUS ROG Zephyrus G14",
+      "useArea": 45,
+      "rentalCosts": 3000,
+      "maxNumberOfPeople": 7,
+      "rentalTypeId": 1,
+      "roomStandardId": 0,
+      "otherUtilities": "",
+      "quantityOfFloor": 0,
+      "areaOfPool": 0,
+      "freeServiceIncluded": "ĂN sáng, Buffer trưa, Ăn tối (ngày đầu)",
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-370x239.jpg",
+      "id": 6
+    },
+    {
+      "id": 7,
+      "typeId": 3,
+      "name": "132456654654651322",
+      "useArea": 45,
+      "rentalCosts": 1100,
+      "maxNumberOfPeople": 3,
+      "rentalTypeId": 1,
+      "roomStandardId": 0,
+      "otherUtilities": "",
+      "quantityOfFloor": 0,
+      "areaOfPool": 0,
+      "freeServiceIncluded": "1323232131",
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-370x239.jpg"
     }
   ],
   "type": [
@@ -117,7 +147,7 @@
       "customerType": 3,
       "birthday": "2023-06-15",
       "gender": 1,
-      "cmnd": 207379736,
+      "identityCard": 207379736,
       "phone": "0555779990",
       "email": "heeyeon@gmail.com",
       "address": "Quảng Nam"
@@ -127,7 +157,7 @@
       "name": "Phan Thị Thuỷ Tiên",
       "birthday": "2023-06-15",
       "gender": 1,
-      "cmnd": "111111111",
+      "identityCard": "111111111",
       "phone": "1111111111",
       "email": "thuytien@gmail.com",
       "customerType": 1,
@@ -137,7 +167,7 @@
       "name": "Dinh Dinh",
       "birthday": "2023-06-29",
       "gender": 2,
-      "cmnd": "123456987",
+      "identityCard": "123456987",
       "phone": "0123456789",
       "email": "nhan@gmail.com",
       "address": "Huế",
@@ -145,21 +175,10 @@
       "id": 6
     },
     {
-      "id": 7,
-      "name": "Nhan Nhan nhăn nhó",
-      "birthday": "2023-04-27",
-      "gender": 2,
-      "cmnd": "123456987",
-      "phone": "0123456987",
-      "email": "nhan@gmail.com",
-      "customerType": 2,
-      "address": "Huế"
-    },
-    {
       "name": "Trung Dang",
       "birthday": "2007-07-05",
       "gender": 2,
-      "cmnd": "123456789",
+      "identityCard": "123456789",
       "phone": "0116549871",
       "email": "nhan@gmail.com",
       "customerType": 2,
@@ -170,12 +189,29 @@
       "name": "Thanh Nhan",
       "birthday": "2000-02-12",
       "gender": 2,
-      "cmnd": "123456789",
+      "identityCard": "123456789",
       "phone": "0123456789",
       "email": "nhan123@gmail.com",
       "customerType": 3,
       "address": "Huế",
       "id": 9
+    },
+    {
+      "name": "Đỗ Thành Nhân",
+      "birthday": "2023-07-28",
+      "gender": {
+        "id": 1,
+        "gender": "Girl"
+      },
+      "identityCard": "13456792",
+      "phone": "0123456789",
+      "email": "nhan@gmail.com",
+      "customerType": {
+        "id": 2,
+        "name": "Platinium"
+      },
+      "address": "Huế",
+      "id": 10
     }
   ],
   "customerType": [

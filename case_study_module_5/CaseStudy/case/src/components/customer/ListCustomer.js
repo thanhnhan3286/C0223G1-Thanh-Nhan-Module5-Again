@@ -2,6 +2,9 @@ import React, {useEffect, useState} from "react";
 import "../header_footer.css"
 import {Link} from "react-router-dom";
 import * as customerService from "../../service/CustomerService"
+import moment from "moment";
+import * as facilityService from "../../service/FacilityService";
+import Swal from "sweetalert2";
 
 export function ListCustomer() {
     const [customers, setCustomers] = useState([]);
@@ -24,6 +27,33 @@ export function ListCustomer() {
         getGender().then(r => null);
         getTypeCustomer().then(r => null);
     }, [])
+
+    const deleteCustomerApi = async (id) => {
+        await customerService.deleteCustomer(id);
+        await getAllCustomer();
+        await Swal.fire({
+            title: "DELETED!!!",
+            icon: "success",
+            timer: 2000
+        })
+    }
+
+    function deleteCustomer(id, name) {
+        Swal.fire({
+            title: "ARE OU SURE ?",
+            text: "DELETE CUSTOMER " + name + " ?",
+            icon: "warning",
+            showCancelButton: true,
+            cancelButtonColor: '#3085d6',
+            cancelButtonText: 'CANCEL',
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'DELETE'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deleteCustomerApi(id).then(r => null);
+            }
+        })
+    }
     return (
         <>
             <header>
@@ -76,7 +106,7 @@ export function ListCustomer() {
                                             <th className="text-center forn-16 w-5">ID</th>
                                             <th className="forn-16 w-15">Name</th>
                                             <th className="forn-16 w-10">Birthday</th>
-                                            <th className="forn-16 w-10">Gender</th>
+                                            <th className="forn-16 w-10 text-center">Gender</th>
                                             <th className="forn-16 w-10">Identity Card</th>
                                             <th className="forn-16 w-10">Phone</th>
                                             <th className="forn-16 w-15">Email</th>
@@ -92,14 +122,15 @@ export function ListCustomer() {
                                                     <tr key={index}>
                                                         <th className="text-center">{customer.id}</th>
                                                         <th>{customer.name}</th>
-                                                        <th>{customer.birthday}</th>
+                                                        <th>{moment(customer.birthday,"YYYY/MM/DD").format("DD/MM/YYYY")}</th>
                                                         <th className="text-center">{gender.find((g) => g.id === customer.gender)?.gender}</th>
-                                                        <th>{customer.cmnd}</th>
+                                                        <th>{customer.identityCard}</th>
                                                         <th>{customer.phone}</th>
                                                         <th>{customer.email}</th>
                                                         <th>{typeCustome.find((t) => t.id === customer.customerType)?.name}</th>
                                                         <th>
-                                                            <a href="http://localhost:63342/CaseStudy/prototype/customer/EditCustomer.html?_ijt=v2j6e3mjs29rrp6oeav7sdb4mb">
+                                                            <Link
+                                                                to={`/customerEdit/${customer.id}`}>
                                                                 <button
                                                                     type="button"
                                                                     className="btn btn-success text-capitalize"
@@ -108,7 +139,7 @@ export function ListCustomer() {
                                                                 >
                                                                     EDIT
                                                                 </button>
-                                                            </a>
+                                                            </Link>
                                                         </th>
                                                         <th>
                                                             <button
@@ -118,6 +149,7 @@ export function ListCustomer() {
                                                                 data-bs-toggle="modal"
                                                                 data-bs-target="#exampleModal"
                                                                 attr="onclick=|deletes('${page.id}')|"
+                                                                onClick={()=>deleteCustomer(`${customer.id}`,`${customer.name}`)}
                                                             >
                                                                 DELETE
                                                             </button>

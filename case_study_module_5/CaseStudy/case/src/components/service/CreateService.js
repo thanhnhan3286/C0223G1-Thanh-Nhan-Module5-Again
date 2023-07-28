@@ -21,6 +21,20 @@ export function CreateService() {
         setTypes(facilityType);
         const roomStandard = await facilityService.findAllRoomStandard();
         setRoomStandard(roomStandard);
+    };
+    const create = async (values) => {
+        await facilityService.createService({
+            ...values,
+            typeId: +values.typeId,
+            rentalTypeId: +values.rentalTypeId,
+            roomStandardId: +values.roomStandardId
+        });
+        navigate("/")
+        await Swal.fire({
+            icon: "success",
+            title: "ADDED!!!",
+            timer: 2000
+        });
     }
     useEffect(() => {
         fetchApi().then(r => null)
@@ -81,22 +95,8 @@ export function CreateService() {
                 })}
                 onSubmit={(values, {setSubmitting, resetForm}) => {
                     setSubmitting(false)
-                    const create = async () => {
-                        await facilityService.createService({
-                            ...values,
-                            typeId: +values.typeId,
-                            rentalTypeId: +values.rentalTypeId,
-                            roomStandardId: +values.roomStandardId
-                        })
-                        navigate("/")
-                        await Swal.fire({
-                            icon: "success",
-                            title: "ADDED!!!",
-                            timer: 2000
-                        })
-                        resetForm();
-                    }
-                    create().then(r => null);
+                    create(values).then(r => null);
+                    resetForm();
                 }}
             >
                 {
