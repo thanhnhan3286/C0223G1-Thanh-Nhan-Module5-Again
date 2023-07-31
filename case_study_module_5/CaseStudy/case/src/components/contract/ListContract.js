@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import * as contractService from "../../service/ContractService"
 import * as customerService from "../../service/CustomerService"
+import moment from "moment";
 
 
 export function ListContract() {
@@ -82,10 +83,11 @@ export function ListContract() {
                                         {
                                             contracts.map((contract, index) => (
                                                 <tr key={index}>
-                                                    <th className="text-center">{contract.id}</th>
+                                                    <th className="text-center">{contract.contractCode}</th>
                                                     <th>{customers.find((c) => c.id === contract.customerId)?.name}</th>
-                                                    <th>{contract.startDay}</th>
-                                                    <th>{contract.endDay}</th>
+                                                    <th>{moment(contract.startDay,"YYYY/MM/DD").format("DD/MM/YYYY")}</th>
+                                                    {/*{moment(customer.birthday,"YYYY/MM/DD").format("DD/MM/YYYY")}*/}
+                                                    <th>{moment(contract.endDay,"YYYY/MM/DD").format("YYYY/MM/DD")}</th>
                                                     <th className="text-center">{contract.deposit}</th>
                                                 </tr>
                                             ))

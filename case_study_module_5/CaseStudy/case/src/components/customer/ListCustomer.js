@@ -24,8 +24,8 @@ export function ListCustomer() {
     };
     useEffect(() => {
         getAllCustomer().then(r => null);
-        getGender().then(r => null);
-        getTypeCustomer().then(r => null);
+        // getGender().then(r => null);
+        // getTypeCustomer().then(r => null);
     }, [])
 
     const deleteCustomerApi = async (id) => {
@@ -123,11 +123,13 @@ export function ListCustomer() {
                                                         <th className="text-center">{customer.id}</th>
                                                         <th>{customer.name}</th>
                                                         <th>{moment(customer.birthday,"YYYY/MM/DD").format("DD/MM/YYYY")}</th>
-                                                        <th className="text-center">{gender.find((g) => g.id === customer.gender)?.gender}</th>
+                                                        {/*<th className="text-center">{gender.find((g) => g.id === customer.gender)?.gender}</th>*/}
+                                                        <th className="text-center">{customer.gender.gender}</th>
                                                         <th>{customer.identityCard}</th>
                                                         <th>{customer.phone}</th>
                                                         <th>{customer.email}</th>
-                                                        <th>{typeCustome.find((t) => t.id === customer.customerType)?.name}</th>
+                                                        {/*<th>{typeCustome.find((t) => t.id === customer.customerType)?.name}</th>*/}
+                                                        <th>{customer.customerType.name}</th>
                                                         <th>
                                                             <Link
                                                                 to={`/customerEdit/${customer.id}`}>

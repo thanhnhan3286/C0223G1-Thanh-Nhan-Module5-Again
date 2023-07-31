@@ -69,7 +69,7 @@ export const deleteService = async (id) => {
 
 export const findAllService = async () => {
     try {
-        return (await axios.get(`http://localhost:8080/facility`)).data;
+        return (await axios.get(`http://localhost:8080/facility?_sort=id&_order=desc`)).data;
     } catch (e) {
         console.log(e);
     }

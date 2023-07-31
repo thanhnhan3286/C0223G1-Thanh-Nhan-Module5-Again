@@ -5,7 +5,7 @@
       "typeId": 3,
       "name": "OCEAN STUDIO SUITE",
       "useArea": 84.8,
-      "rentalCosts": 50000,
+      "rentalCosts": 123456,
       "maxNumberOfPeople": 10,
       "rentalTypeId": 2,
       "roomStandardId": 1,
@@ -144,9 +144,15 @@
     {
       "id": 1,
       "name": "Huỳnh Đức Định",
-      "customerType": 3,
+      "customerType": {
+        "id": 2,
+        "name": "Platinium"
+      },
       "birthday": "2023-06-15",
-      "gender": 1,
+      "gender": {
+        "id": 1,
+        "gender": "Girl"
+      },
       "identityCard": 207379736,
       "phone": "0555779990",
       "email": "heeyeon@gmail.com",
@@ -156,43 +162,67 @@
       "id": 4,
       "name": "Phan Thị Thuỷ Tiên",
       "birthday": "2023-06-15",
-      "gender": 1,
+      "gender": {
+        "id": 1,
+        "gender": "Girl"
+      },
       "identityCard": "111111111",
       "phone": "1111111111",
       "email": "thuytien@gmail.com",
-      "customerType": 1,
+      "customerType": {
+        "id": 2,
+        "name": "Platinium"
+      },
       "address": "Đà nẵng"
     },
     {
       "name": "Dinh Dinh",
       "birthday": "2023-06-29",
-      "gender": 2,
+      "gender": {
+        "id": 1,
+        "gender": "Girl"
+      },
       "identityCard": "123456987",
       "phone": "0123456789",
       "email": "nhan@gmail.com",
       "address": "Huế",
-      "customerType": 1,
+      "customerType": {
+        "id": 2,
+        "name": "Platinium"
+      },
       "id": 6
     },
     {
       "name": "Trung Dang",
       "birthday": "2007-07-05",
-      "gender": 2,
+      "gender": {
+        "id": 1,
+        "gender": "Girl"
+      },
       "identityCard": "123456789",
       "phone": "0116549871",
       "email": "nhan@gmail.com",
-      "customerType": 2,
+      "customerType": {
+        "id": 2,
+        "name": "Platinium"
+      },
       "address": "Huế",
       "id": 8
     },
     {
       "name": "Thanh Nhan",
       "birthday": "2000-02-12",
-      "gender": 2,
+      "gender": {
+        "id": 1,
+        "gender": "Girl"
+      },
       "identityCard": "123456789",
       "phone": "0123456789",
       "email": "nhan123@gmail.com",
-      "customerType": 3,
+      "customerType": {
+        "id": 2,
+        "name": "Platinium"
+      },
       "address": "Huế",
       "id": 9
     },

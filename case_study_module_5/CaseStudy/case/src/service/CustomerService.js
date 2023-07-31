@@ -1,5 +1,15 @@
 import axios from "axios";
 
+export const findCustomerById = async (id) => {
+    try {
+        return (await axios.get(`http://localhost:8080/customer/` + id)).data;
+    } catch (e) {
+        console.log(e);
+    }
+
+}
+
+
 export const saveCustomer = async (param) => {
     try {
         await axios.put(`http://localhost:8080/customer/` + param.id, param);
@@ -63,7 +73,7 @@ export const getGender = async () => {
 
 export const findAllCustomer = async () => {
     try {
-        return (await axios.get(`http://localhost:8080/customer`)).data;
+        return (await axios.get(`http://localhost:8080/customer?_sort=id&_order=desc`)).data;
     } catch (e) {
         console.log(e);
     }
