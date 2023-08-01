@@ -1,0 +1,94 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Nhan",
+      "author": "typicode",
+      "coment": {
+        "id": 5,
+        "body": "some comment",
+        "postId": 1
+      }
+    },
+    {
+      "id": 2,
+      "title": "json-server",
+      "author": "typicode",
+      "coment": {
+        "id": 4,
+        "body": "some comment",
+        "postId": 1
+      }
+    },
+    {
+      "id": 3,
+      "title": "json-server",
+      "author": "typicode",
+      "coment": {
+        "id": 3,
+        "body": "some comment",
+        "postId": 1
+      }
+    },
+    {
+      "id": 4,
+      "title": "json-server",
+      "author": "typicode",
+      "coment": {
+        "id": 2,
+        "body": "some comment",
+        "postId": 1
+      }
+    },
+    {
+      "title": "123123",
+      "author": "2023-07-29",
+      "coment": {
+        "id": 1,
+        "body": "some comment",
+        "postId": 1
+      },
+      "id": 5
+    },
+    {
+      "title": "123456789",
+      "author": "23321-03-12",
+      "coment": {
+        "id": 3,
+        "body": "some comment",
+        "postId": 1
+      },
+      "id": 6
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    },
+    {
+      "id": 2,
+      "body": "some comment",
+      "postId": 1
+    },
+    {
+      "id": 3,
+      "body": "some comment",
+      "postId": 1
+    },
+    {
+      "id": 4,
+      "body": "some comment",
+      "postId": 1
+    },
+    {
+      "id": 5,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

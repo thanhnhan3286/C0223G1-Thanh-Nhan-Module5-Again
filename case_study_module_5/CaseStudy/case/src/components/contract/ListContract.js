@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import * as contractService from "../../service/ContractService"
 import * as customerService from "../../service/CustomerService"
 import moment from "moment";
+import {Field, Form, Formik} from "formik";
 
 
 export function ListContract() {
@@ -24,6 +25,22 @@ export function ListContract() {
     return (
         <>
             <header>
+                <div className="col-6 d-flex">
+                    <Formik
+                    initialValues={{
+
+                    }}>
+                        <Form>
+                            <Field type="date"
+                                   name="startDay"
+                                   placeholder="Search by id" className="form-control-md"/>
+                            <Field type="date"
+                                   name="startDay"
+                                   placeholder="Search by id" className="form-control-md"/>
+                            <button type="submit" className="btn btn-danger">Search</button>
+                        </Form>
+                    </Formik>
+                </div>
                 <div id="indicators" className="carousel " data-ride="carousel">
                     <div className="carousel-inner" role="listbox">
                         <div className="carousel-item active img">
@@ -85,9 +102,9 @@ export function ListContract() {
                                                 <tr key={index}>
                                                     <th className="text-center">{contract.contractCode}</th>
                                                     <th>{customers.find((c) => c.id === contract.customerId)?.name}</th>
-                                                    <th>{moment(contract.startDay,"YYYY/MM/DD").format("DD/MM/YYYY")}</th>
+                                                    <th>{moment(contract.startDay, "YYYY/MM/DD").format("DD/MM/YYYY")}</th>
                                                     {/*{moment(customer.birthday,"YYYY/MM/DD").format("DD/MM/YYYY")}*/}
-                                                    <th>{moment(contract.endDay,"YYYY/MM/DD").format("YYYY/MM/DD")}</th>
+                                                    <th>{moment(contract.endDay, "YYYY/MM/DD").format("YYYY/MM/DD")}</th>
                                                     <th className="text-center">{contract.deposit}</th>
                                                 </tr>
                                             ))
